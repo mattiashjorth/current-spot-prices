@@ -1,0 +1,14 @@
+@import-normalize;
+@import "spotPrice-list.css";
+
+*,
+*::before,
+*::after {
+  font-family: "Roboto";
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  display: grid;
+}
