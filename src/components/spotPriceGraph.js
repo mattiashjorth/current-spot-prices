@@ -11,16 +11,16 @@ import {
   ReferenceLine,
 } from "recharts";
 
-export default function SpotPriceGraph({ spotPricesTableData }) {
+export default function SpotPriceGraph({ spotPricesGraphData }) {
   const [maxY, setMaxY] = React.useState(0);
   const [currentDateString, setCurrentDateString] = React.useState();
-  const [ticksX, setTicksX] = React.useState(["2021-10-13 00:00"]);
+  const [ticksX, setTicksX] = React.useState([]);
 
   React.useEffect(() => {
-    setMaxY(calculateMaxY(spotPricesTableData));
+    setMaxY(calculateMaxY(spotPricesGraphData));
     setCurrentDateString(getCurrentDateString());
-    setTicksX(getTicksX(spotPricesTableData));
-  }, [spotPricesTableData]);
+    setTicksX(getTicksX(spotPricesGraphData));
+  }, [spotPricesGraphData]);
 
   function getCurrentDateString() {
     let soon = new Date();
@@ -29,14 +29,13 @@ export default function SpotPriceGraph({ spotPricesTableData }) {
   }
 
   function calculateMaxY(data) {
-    let dataMax = Math.max(...data.map((y) => y.valueKr), 0);
+    let dataMax = Math.max(...data.map((y) => y.value), 0);
     return Math.floor(dataMax) + 1;
   }
 
   function getTicksX(data) {
-    let ticks = data.filter((value, index, array) => index == 12);
+    let ticks = data.map((x) => x.timeStamp).filter((value, index, array) => index % 6 === 0 && index !== 0);
 
-    debugger;
     return ticks;
   }
 
@@ -64,7 +63,9 @@ export default function SpotPriceGraph({ spotPricesTableData }) {
   return (
     <ResponsiveContainer width="100%" height={550}>
       <LineChart
-        data={spotPricesTableData}
+        width="100%"
+        height={550}
+        data={spotPricesGraphData}
         margin={{
           top: 20,
           right: 30,
@@ -72,9 +73,9 @@ export default function SpotPriceGraph({ spotPricesTableData }) {
           bottom: 100,
         }}
       >
-        <Line type="monotone" dataKey="valueKr" stroke="#8884d8" strokeWidth={2} label={<CustomizedLineLabel />} />
+        <Line type="monotone" dataKey="value" stroke="#8884d8" strokeWidth={2} label={<CustomizedLineLabel />} />
         <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="timeStampShort" tick={<CustomizedAxisTick />} ticks={ticksX} />
+        <XAxis dataKey="timeStamp" tick={<CustomizedAxisTick />} ticks={ticksX} />
         <YAxis domain={[0, maxY]} tickCount={maxY + 1}>
           <Label value="kr/kWh" position="center" />
         </YAxis>
