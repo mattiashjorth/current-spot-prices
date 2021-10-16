@@ -8,6 +8,7 @@ export default function SpotPricesContainer() {
   const [spotPricesData, setSpotPricesData] = useState([]);
   const [spotPricesGraphData, setSpotPricesGraphData] = useState([]);
   const [refreshInterval, setRefreshInterval] = useState(15 * 60 * 1000);
+  const [currentHour, setCurrentHour] = useState();
 
   useEffect(() => {
     const area = "SN3";
@@ -47,6 +48,22 @@ export default function SpotPricesContainer() {
     return () => clearInterval(interval);
   }, [refreshInterval]);
 
+  useEffect(() => {
+    const interval = setInterval(() => setCurrentHour(getCurrentHour()), 1000);
+    return () => clearInterval(interval);
+  });
+
+  function getCurrentHour() {
+    const now = new Date();
+    const currentDateString = now.toLocaleString("sv-SE").substring(0, 14) + "00:00";
+    const timeStampFull = currentDateString.replace(" ", "T");
+    const timeStampShort = currentDateString.substring(0, 16);
+    const day = currentDateString.substring(0, 10);
+    const hour = currentDateString.substring(11, 16);
+
+    return { timeStampFull, timeStampShort, day, hour };
+  }
+
   function setData(data) {
     const filteredData = data.slice(-48);
 
@@ -56,8 +73,6 @@ export default function SpotPricesContainer() {
       timeStampHour: data.TimeStampHour,
       value: data.Value,
       unit: data.Unit,
-      valueKr: Math.round(data.Value, 0) / 100,
-      timeStampShort: data.TimeStampDay + " " + data.TimeStampHour,
     }));
     setSpotPricesData(mappedData);
 
@@ -75,7 +90,7 @@ export default function SpotPricesContainer() {
   } else {
     return (
       <>
-        <SpotPriceGraph spotPricesGraphData={spotPricesGraphData} />
+        <SpotPriceGraph spotPricesGraphData={spotPricesGraphData} currentHour={currentHour} />
         <SpotPriceList spotPricesData={spotPricesData} />
       </>
     );
