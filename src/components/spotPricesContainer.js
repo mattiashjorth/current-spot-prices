@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import SpotPriceList from "./spotPriceList";
 import SpotPriceGraph from "./spotPriceGraph";
 
-export default function SpotPricesContainer() {
+export default function SpotPricesContainer(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [spotPricesData, setSpotPricesData] = useState([]);
@@ -11,7 +11,14 @@ export default function SpotPricesContainer() {
   const [currentHour, setCurrentHour] = useState();
 
   useEffect(() => {
-    const area = "SN3";
+    const validPriceAreas = ["SN1", "SN2", "SN3", "SN4"];
+    const area = props.match.params.priceArea.toUpperCase();
+
+    if (!validPriceAreas.includes(area.toUpperCase())) {
+      setIsLoaded(true);
+      setError("Not supported price area");
+      return;
+    }
 
     const getDataFromApi = () => {
       fetch(getApiUrl())
@@ -46,10 +53,10 @@ export default function SpotPricesContainer() {
     getDataFromApi();
     const interval = setInterval(() => getDataFromApi(), refreshInterval);
     return () => clearInterval(interval);
-  }, [refreshInterval]);
+  }, [refreshInterval, props]);
 
   useEffect(() => {
-    const interval = setInterval(() => setCurrentHour(getCurrentHour()), 1000);
+    const interval = setInterval(() => setCurrentHour(getCurrentHour()), 15 * 1000);
     return () => clearInterval(interval);
   });
 
@@ -84,15 +91,14 @@ export default function SpotPricesContainer() {
   }
 
   if (error) {
-    return <div className="error-div">Error: {error.message}</div>;
+    return <div className="error-div">Error: {error.message ?? error}</div>;
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    return (
-      <>
-        <SpotPriceGraph spotPricesGraphData={spotPricesGraphData} currentHour={currentHour} />
-        <SpotPriceList spotPricesData={spotPricesData} />
-      </>
-    );
+    if (props.match.path === "/table/:priceArea") {
+      return <SpotPriceList data={spotPricesData} />;
+    } else if (props.match.path === "/graph/:priceArea") {
+      return <SpotPriceGraph data={spotPricesGraphData} currentHour={currentHour} />;
+    }
   }
 }

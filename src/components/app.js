@@ -1,15 +1,22 @@
 import "../css/app.css";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 import SpotPricesContainer from "./spotPricesContainer";
 
-//https://www.vattenfall.se/api/price/spot/pricearea/2021-10-05/2050-01-01/SN3
-
 function App() {
   return (
-    <>
-      <header>Dagens spotpriser</header>
-      <SpotPricesContainer />
-    </>
+    <Router>
+      <Switch>
+        <Route path="/table/:priceArea" component={SpotPricesContainer} />
+        <Route path="/graph/:priceArea" component={SpotPricesContainer} />
+        <Route exact path="/">
+          <Redirect to="/graph/sn3" />
+        </Route>
+        <Route path="/">
+          <div className="error-div">Page not found</div>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

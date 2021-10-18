@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
 
-export default function SpotPriceList({ spotPricesData }) {
+export default function SpotPriceList({ data }) {
   return (
     <div className="spotprice-list">
       <TableContainer component={Paper}>
@@ -14,7 +14,7 @@ export default function SpotPriceList({ spotPricesData }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {spotPricesData.map((row) => (
+            {data.map((row) => (
               <TableRow key={row.timeStamp} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                 <TableCell align="right">{row.timeStampDay}</TableCell>
                 <TableCell align="right">{row.timeStampHour}</TableCell>

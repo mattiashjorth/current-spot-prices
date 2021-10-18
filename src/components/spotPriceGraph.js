@@ -1,32 +1,31 @@
 import React from "react";
 import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceLine } from "recharts";
 
-export default function SpotPriceGraph({ spotPricesGraphData, currentHour }) {
+export default function SpotPriceGraph({ data, currentHour }) {
   const [maxY, setMaxY] = React.useState(0);
-  const [ticksX, setTicksX] = React.useState([]);
-  const [ticksY, setTicksY] = React.useState([]);
 
   React.useEffect(() => {
-    setMaxY(calculateMaxY(spotPricesGraphData));
-    setTicksX(getTicksX(spotPricesGraphData));
-    setTicksY(getTicksY());
-  }, [spotPricesGraphData]);
+    function calculateMaxY() {
+      const dataMax = Math.max(...data.map((y) => y.value), 0);
+      return Math.floor(dataMax) + 1;
+    }
 
-  function calculateMaxY(data) {
-    const dataMax = Math.max(...data.map((y) => y.value), 0);
-    return Math.floor(dataMax) + 1;
-  }
+    setMaxY(calculateMaxY());
+  }, [data]);
 
-  function getTicksX(data) {
+  function getTicksX() {
     const ticks = data.map((x) => x.timeStamp).filter((value, index, array) => index % 6 === 0 && index !== 0);
-
     return ticks;
   }
 
   function getTicksY() {
-    let ticks = [...Array(3).keys()];
+    const ticks = [...Array(maxY + 1).keys()];
     ticks.shift();
     return ticks;
+  }
+
+  function getCurrentValue() {
+    return data.find((e) => e.timeStamp === currentHour?.timeStampShort)?.value;
   }
 
   function CustomizedLineLabel(props) {
@@ -65,7 +64,9 @@ export default function SpotPriceGraph({ spotPricesGraphData, currentHour }) {
   return (
     <ResponsiveContainer height={550} width="100%">
       <LineChart
-        data={spotPricesGraphData}
+        height={550}
+        width="100%"
+        data={data}
         margin={{
           top: 20,
           right: 40,
@@ -82,9 +83,9 @@ export default function SpotPriceGraph({ spotPricesGraphData, currentHour }) {
           activeDot={{ r: 7 }}
         />
         <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-        <XAxis dataKey="timeStamp" tick={<CustomizedXAxisTick />} ticks={ticksX} />
-        <YAxis domain={[0, maxY]} tick={<CustomizedYAxisTick />} ticks={ticksY} />
-        <ReferenceLine x={currentHour?.timeStampShort} stroke="orange" />
+        <XAxis dataKey="timeStamp" tick={<CustomizedXAxisTick />} ticks={getTicksX()} />
+        <YAxis domain={[0, maxY]} tick={<CustomizedYAxisTick />} ticks={getTicksY()} />
+        <ReferenceLine x={currentHour?.timeStampShort} stroke="orange" label={getCurrentValue()} />
         <Tooltip />
       </LineChart>
     </ResponsiveContainer>
