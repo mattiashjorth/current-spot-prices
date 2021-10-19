@@ -12,7 +12,9 @@ body {
   width: 100%;
   padding: 0;
   margin: 0;
-  display: grid;
+  background-color: #132737;
+  color: white;
+  text-align: center;
 }
 
 .error-div {

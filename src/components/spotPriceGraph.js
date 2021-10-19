@@ -29,9 +29,9 @@ export default function SpotPriceGraph({ data, currentHour }) {
   }
 
   function CustomizedLineLabel(props) {
-    const { x, y, stroke, value } = props;
+    const { x, y, value } = props;
     return (
-      <text x={x} y={y} dy={-8} fill={stroke} fontSize={10} fontStyle="italic" textAnchor="middle">
+      <text x={x} y={y} dy={-12} fill="#fff" fontSize={14} fontStyle="italic" textAnchor="middle">
         {value.toFixed(2)}
       </text>
     );
@@ -42,7 +42,7 @@ export default function SpotPriceGraph({ data, currentHour }) {
 
     return (
       <g transform={`translate(${x},${y})`}>
-        <text x={0} y={0} dy={16} textAnchor="end" fill="#666" transform="rotate(-35)">
+        <text x={0} y={0} dy={16} textAnchor="end" fill="#fff" transform="rotate(-35)">
           {payload.value}
         </text>
       </g>
@@ -54,7 +54,7 @@ export default function SpotPriceGraph({ data, currentHour }) {
 
     return (
       <g transform={`translate(${x},${y})`}>
-        <text x={0} y={0} dy={0} textAnchor="end" fill="#666" transform="rotate(-35)">
+        <text x={0} y={0} dy={0} textAnchor="end" fill="#fff" transform="rotate(-35)">
           {payload.value} kr/kWh
         </text>
       </g>
@@ -62,31 +62,36 @@ export default function SpotPriceGraph({ data, currentHour }) {
   }
 
   return (
-    <ResponsiveContainer height={550} width="100%">
+    <ResponsiveContainer width="100%" aspect={2} maxHeight={1000}>
       <LineChart
-        height={550}
-        width="100%"
+        height={500}
+        width={250}
         data={data}
         margin={{
-          top: 20,
-          right: 40,
-          left: 40,
-          bottom: 100,
+          top: 15,
+          right: 70,
+          left: 30,
+          bottom: 70,
         }}
       >
         <Line
           type="monotone"
           dataKey="value"
           stroke="#8884d8"
-          strokeWidth={2}
           label={<CustomizedLineLabel />}
-          activeDot={{ r: 7 }}
+          activeDot={{ fill: "#2e4355", stroke: "#8884d8", strokeWidth: 5, r: 10 }}
+          dot={{ fill: "#2e4355", stroke: "#8884d8", strokeWidth: 2, r: 5 }}
+          strokeWidth="5"
         />
-        <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
+        <CartesianGrid horizontal="true" vertical="" stroke="#243240" />
         <XAxis dataKey="timeStamp" tick={<CustomizedXAxisTick />} ticks={getTicksX()} />
         <YAxis domain={[0, maxY]} tick={<CustomizedYAxisTick />} ticks={getTicksY()} />
         <ReferenceLine x={currentHour?.timeStampShort} stroke="orange" label={getCurrentValue()} />
-        <Tooltip />
+        <Tooltip
+          contentStyle={{ backgroundColor: "#8884d8", color: "#fff" }}
+          itemStyle={{ color: "#ffff" }}
+          cursor={false}
+        />
       </LineChart>
     </ResponsiveContainer>
   );

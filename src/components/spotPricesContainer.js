@@ -9,10 +9,10 @@ export default function SpotPricesContainer(props) {
   const [spotPricesGraphData, setSpotPricesGraphData] = useState([]);
   const [refreshInterval, setRefreshInterval] = useState(15 * 60 * 1000);
   const [currentHour, setCurrentHour] = useState();
+  const area = props.match.params.priceArea.toUpperCase();
 
   useEffect(() => {
     const validPriceAreas = ["SN1", "SN2", "SN3", "SN4"];
-    const area = props.match.params.priceArea.toUpperCase();
 
     if (!validPriceAreas.includes(area.toUpperCase())) {
       setIsLoaded(true);
@@ -53,12 +53,13 @@ export default function SpotPricesContainer(props) {
     getDataFromApi();
     const interval = setInterval(() => getDataFromApi(), refreshInterval);
     return () => clearInterval(interval);
-  }, [refreshInterval, props]);
+  }, [refreshInterval, props, area]);
 
   useEffect(() => {
-    const interval = setInterval(() => setCurrentHour(getCurrentHour()), 15 * 1000);
+    setCurrentHour(getCurrentHour());
+    const interval = setInterval(() => setCurrentHour(getCurrentHour()), 60 * 1000);
     return () => clearInterval(interval);
-  });
+  }, []);
 
   function getCurrentHour() {
     const now = new Date();
@@ -95,10 +96,16 @@ export default function SpotPricesContainer(props) {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    if (props.match.path === "/table/:priceArea") {
-      return <SpotPriceList data={spotPricesData} />;
-    } else if (props.match.path === "/graph/:priceArea") {
-      return <SpotPriceGraph data={spotPricesGraphData} currentHour={currentHour} />;
+    let dataPresentation;
+    if (props.match.path === "/table/:priceArea") dataPresentation = <SpotPriceList data={spotPricesData} />;
+    else if (props.match.path === "/graph/:priceArea") {
+      dataPresentation = <SpotPriceGraph data={spotPricesGraphData} currentHour={currentHour} />;
     }
+    return (
+      <>
+        <h2>Aktuella spotpriser {area}</h2>
+        {dataPresentation}
+      </>
+    );
   }
 }
