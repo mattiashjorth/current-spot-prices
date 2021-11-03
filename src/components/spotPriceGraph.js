@@ -35,7 +35,7 @@ export default function SpotPriceGraph({ data, currentHour }) {
     const { x, y, value, index } = props;
     if (index === currentIndex) {
       return (
-        <text x={x} y={y} dy={-30} dx={11} fill="#DDD" font-weight="bold" fontSize={16} textAnchor="middle">
+        <text x={x} y={y} dy={-30} dx={11} fill="#DDD" fontWeight="bold" fontSize={16} textAnchor="middle">
           {value.toFixed(2)} {unit}
         </text>
       );
