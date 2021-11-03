@@ -5,7 +5,7 @@ import SpotPricesContainer from "./spotPricesContainer";
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route path="/table/:priceArea" component={SpotPricesContainer} />
         <Route path="/graph/:priceArea" component={SpotPricesContainer} />
