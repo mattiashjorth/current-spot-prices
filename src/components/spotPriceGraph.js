@@ -1,10 +1,12 @@
 import React from "react";
 import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceLine } from "recharts";
+import useWindowSize from "./useWindowSize";
 
 export default function SpotPriceGraph({ data, currentHour }) {
   const [maxY, setMaxY] = React.useState(0);
   const [currentIndex, setCurrentIndex] = React.useState();
   const unit = "kr/kWh";
+  const windowSize = useWindowSize();
 
   React.useEffect(() => {
     function calculateMaxY() {
@@ -91,7 +93,7 @@ export default function SpotPriceGraph({ data, currentHour }) {
   };
 
   return (
-    <ResponsiveContainer width="100%" aspect={1.2} maxHeight={window.innerHeight - 100}>
+    <ResponsiveContainer width="100%" aspect={1.2} maxHeight={windowSize.height - 100}>
       <LineChart
         data={data}
         margin={{
