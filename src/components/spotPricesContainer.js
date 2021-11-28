@@ -40,7 +40,7 @@ export default function SpotPricesContainer(props) {
 
     const getApiUrl = () => {
       const fromDateString = getTimestampToLoadDataFrom().toLocaleString("sv-SE").split(" ")[0];
-      let url = `/api/price/spot/pricearea/${fromDateString}/2050-01-01/${area}`;
+      let url = `https://jsonp.afeld.me/?url=https://www.vattenfall.se/api/price/spot/pricearea/${fromDateString}/2050-01-01/${area}`;
       return url;
     };
 
