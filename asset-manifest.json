@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/current-spot-prices/static/css/main.6fe14f50.chunk.css",
+    "main.css": "/current-spot-prices/static/css/main.c3df99ce.chunk.css",
     "main.js": "/current-spot-prices/static/js/main.c9c9eac9.chunk.js",
     "main.js.map": "/current-spot-prices/static/js/main.c9c9eac9.chunk.js.map",
     "runtime-main.js": "/current-spot-prices/static/js/runtime-main.f529740c.js",
@@ -8,13 +8,13 @@
     "static/js/2.d12cc1ef.chunk.js": "/current-spot-prices/static/js/2.d12cc1ef.chunk.js",
     "static/js/2.d12cc1ef.chunk.js.map": "/current-spot-prices/static/js/2.d12cc1ef.chunk.js.map",
     "index.html": "/current-spot-prices/index.html",
-    "static/css/main.6fe14f50.chunk.css.map": "/current-spot-prices/static/css/main.6fe14f50.chunk.css.map",
+    "static/css/main.c3df99ce.chunk.css.map": "/current-spot-prices/static/css/main.c3df99ce.chunk.css.map",
     "static/js/2.d12cc1ef.chunk.js.LICENSE.txt": "/current-spot-prices/static/js/2.d12cc1ef.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f529740c.js",
     "static/js/2.d12cc1ef.chunk.js",
-    "static/css/main.6fe14f50.chunk.css",
+    "static/css/main.c3df99ce.chunk.css",
     "static/js/main.c9c9eac9.chunk.js"
   ]
 }
