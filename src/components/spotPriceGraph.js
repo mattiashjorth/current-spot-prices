@@ -109,10 +109,10 @@ export default function SpotPriceGraph({ data, currentHour }) {
           stroke="#8884d8"
           label={<CustomizedLineLabel />}
           activeDot={{ fill: "#2e4355", stroke: "#8884d8", strokeWidth: 4, r: 9 }}
-          dot={{ fill: "#2e4355", stroke: "#8884d8", strokeWidth: 2, r: 5 }}
+          dot=""
           strokeWidth="4"
         />
-        <CartesianGrid horizontal="true" vertical="" stroke="#243240" />
+        <CartesianGrid horizontal="" vertical="" stroke="#243240" />
         <XAxis dataKey="timeStamp" tick={<CustomizedXAxisTick />} ticks={getTicksX()} />
         <YAxis domain={[0, maxY]} tick={<CustomizedYAxisTick />} ticks={getTicksY()} />
         <ReferenceLine x={currentHour?.timeStampShort} stroke="orange" strokeWidth="0.5" />
