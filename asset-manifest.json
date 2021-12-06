@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/current-spot-prices/static/css/main.d3d0203d.chunk.css",
-    "main.js": "/current-spot-prices/static/js/main.51a0f602.chunk.js",
-    "main.js.map": "/current-spot-prices/static/js/main.51a0f602.chunk.js.map",
+    "main.js": "/current-spot-prices/static/js/main.d692f466.chunk.js",
+    "main.js.map": "/current-spot-prices/static/js/main.d692f466.chunk.js.map",
     "runtime-main.js": "/current-spot-prices/static/js/runtime-main.f529740c.js",
     "runtime-main.js.map": "/current-spot-prices/static/js/runtime-main.f529740c.js.map",
-    "static/js/2.fc20e13d.chunk.js": "/current-spot-prices/static/js/2.fc20e13d.chunk.js",
-    "static/js/2.fc20e13d.chunk.js.map": "/current-spot-prices/static/js/2.fc20e13d.chunk.js.map",
+    "static/js/2.5dd97eee.chunk.js": "/current-spot-prices/static/js/2.5dd97eee.chunk.js",
+    "static/js/2.5dd97eee.chunk.js.map": "/current-spot-prices/static/js/2.5dd97eee.chunk.js.map",
     "index.html": "/current-spot-prices/index.html",
     "service-worker.js": "/current-spot-prices/service-worker.js",
     "service-worker.js.map": "/current-spot-prices/service-worker.js.map",
     "static/css/main.d3d0203d.chunk.css.map": "/current-spot-prices/static/css/main.d3d0203d.chunk.css.map",
-    "static/js/2.fc20e13d.chunk.js.LICENSE.txt": "/current-spot-prices/static/js/2.fc20e13d.chunk.js.LICENSE.txt"
+    "static/js/2.5dd97eee.chunk.js.LICENSE.txt": "/current-spot-prices/static/js/2.5dd97eee.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f529740c.js",
-    "static/js/2.fc20e13d.chunk.js",
+    "static/js/2.5dd97eee.chunk.js",
     "static/css/main.d3d0203d.chunk.css",
-    "static/js/main.51a0f602.chunk.js"
+    "static/js/main.d692f466.chunk.js"
   ]
 }
