@@ -1,22 +1,20 @@
 {
   "files": {
-    "main.css": "/current-spot-prices/static/css/main.d3d0203d.chunk.css",
-    "main.js": "/current-spot-prices/static/js/main.d692f466.chunk.js",
-    "main.js.map": "/current-spot-prices/static/js/main.d692f466.chunk.js.map",
+    "main.css": "/current-spot-prices/static/css/main.3a3f232b.chunk.css",
+    "main.js": "/current-spot-prices/static/js/main.0735f784.chunk.js",
+    "main.js.map": "/current-spot-prices/static/js/main.0735f784.chunk.js.map",
     "runtime-main.js": "/current-spot-prices/static/js/runtime-main.f529740c.js",
     "runtime-main.js.map": "/current-spot-prices/static/js/runtime-main.f529740c.js.map",
-    "static/js/2.5dd97eee.chunk.js": "/current-spot-prices/static/js/2.5dd97eee.chunk.js",
-    "static/js/2.5dd97eee.chunk.js.map": "/current-spot-prices/static/js/2.5dd97eee.chunk.js.map",
+    "static/js/2.d12cc1ef.chunk.js": "/current-spot-prices/static/js/2.d12cc1ef.chunk.js",
+    "static/js/2.d12cc1ef.chunk.js.map": "/current-spot-prices/static/js/2.d12cc1ef.chunk.js.map",
     "index.html": "/current-spot-prices/index.html",
-    "service-worker.js": "/current-spot-prices/service-worker.js",
-    "service-worker.js.map": "/current-spot-prices/service-worker.js.map",
-    "static/css/main.d3d0203d.chunk.css.map": "/current-spot-prices/static/css/main.d3d0203d.chunk.css.map",
-    "static/js/2.5dd97eee.chunk.js.LICENSE.txt": "/current-spot-prices/static/js/2.5dd97eee.chunk.js.LICENSE.txt"
+    "static/css/main.3a3f232b.chunk.css.map": "/current-spot-prices/static/css/main.3a3f232b.chunk.css.map",
+    "static/js/2.d12cc1ef.chunk.js.LICENSE.txt": "/current-spot-prices/static/js/2.d12cc1ef.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f529740c.js",
-    "static/js/2.5dd97eee.chunk.js",
-    "static/css/main.d3d0203d.chunk.css",
-    "static/js/main.d692f466.chunk.js"
+    "static/js/2.d12cc1ef.chunk.js",
+    "static/css/main.3a3f232b.chunk.css",
+    "static/js/main.0735f784.chunk.js"
   ]
 }
