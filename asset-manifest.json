@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/current-spot-prices/static/css/main.3a3f232b.chunk.css",
-    "main.js": "/current-spot-prices/static/js/main.0735f784.chunk.js",
-    "main.js.map": "/current-spot-prices/static/js/main.0735f784.chunk.js.map",
+    "main.js": "/current-spot-prices/static/js/main.368278c8.chunk.js",
+    "main.js.map": "/current-spot-prices/static/js/main.368278c8.chunk.js.map",
     "runtime-main.js": "/current-spot-prices/static/js/runtime-main.f529740c.js",
     "runtime-main.js.map": "/current-spot-prices/static/js/runtime-main.f529740c.js.map",
     "static/js/2.d12cc1ef.chunk.js": "/current-spot-prices/static/js/2.d12cc1ef.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.f529740c.js",
     "static/js/2.d12cc1ef.chunk.js",
     "static/css/main.3a3f232b.chunk.css",
-    "static/js/main.0735f784.chunk.js"
+    "static/js/main.368278c8.chunk.js"
   ]
 }
